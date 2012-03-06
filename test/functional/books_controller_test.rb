@@ -2,6 +2,11 @@ require 'test_helper'
 
 class BooksControllerTest < ActionController::TestCase
   
+  setup do
+    @book = Factory(:book)
+    @search_book = Factory(:book, title: 'Rails Recipes', isbn: '978-1-93435-677-7', authors: 'Chad Fowler')
+  end
+  
   test "book listing" do
     get :index
     assert_response :success
@@ -14,11 +19,11 @@ class BooksControllerTest < ActionController::TestCase
   end
   
   test "show book" do
-    get :show, id: books(:steppenwolf).id
+    get :show, id: @book.id
 
     assert_response :success
     assert assigns(:book)
-    assert_equal assigns(:book), books(:steppenwolf)
+    assert_equal assigns(:book), @book
   end
   
   test "new book" do
@@ -44,26 +49,26 @@ class BooksControllerTest < ActionController::TestCase
   end
   
   test "edit book" do
-    get :edit, id: books(:steppenwolf).id
+    get :edit, id: @book.id
 
     assert_response :success
     assert assigns(:book)
-    assert_equal assigns(:book), books(:steppenwolf)
+    assert_equal assigns(:book), @book
   end
 
   test "update book with valid parameters" do
-    put :update, id: books(:steppenwolf).id,
+    put :update, id: @book.id,
                  book: {title: 'Programming Your Home',
                         authors: 'Mike Riley',
                         isbn: '978-1-93435-690-6'}
                      
     assert_response :redirect
-    assert_redirected_to book_path(books(:steppenwolf))
+    assert_redirected_to book_path(@book)
     assert flash[:notice] 
   end
   
   test "update book with invalid parameters" do
-    put :update, id: books(:steppenwolf).id,
+    put :update, id: @book.id,
                  book: {title: 'Some garbage', isbn: 'invalid'}
     assert_response :success
     assert assigns(:book)
@@ -72,9 +77,8 @@ class BooksControllerTest < ActionController::TestCase
   end
   
   test "delete book" do
-    book = books(:steppenwolf)
     assert_difference("Book.count", -1) do
-      delete :destroy, id: book.id
+      delete :destroy, id: @book.id
       assert_response :redirect
       assert_redirected_to books_path
       assert flash[:notice]
@@ -85,21 +89,21 @@ class BooksControllerTest < ActionController::TestCase
     get :search, query: 'Rails Recipes'
     assert_response :success
     assert_template :index
-    assert assigns(:books).include?(books(:rails_recipes))
+    assert assigns(:books).include?(@search_book)
   end
   
   test "search by isbn" do
     get :search, query: '978-1-93435-677-7', by: 'isbn'
     assert_response :success
     assert_template :index
-    assert assigns(:books).include?(books(:rails_recipes))
+    assert assigns(:books).include?(@search_book)
   end
   
   test "search by authors" do
-    get :search, query: 'Hermann', by: 'authors'
+    get :search, query: 'Fowler', by: 'authors'
     assert_response :success
     assert_template :index
-    assert assigns(:books).include?(books(:steppenwolf))
+    assert assigns(:books).include?(@search_book)
   end
 
 end

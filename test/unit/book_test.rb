@@ -3,7 +3,7 @@ require 'test_helper'
 class BookTest < ActiveSupport::TestCase
   
   setup do
-    @book = books(:steppenwolf)
+    @book = Factory(:book)
   end
 
   test "a book with all attributes should be valid" do
