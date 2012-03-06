@@ -9,16 +9,8 @@ gem 'rails', '3.1.1'
 gem 'heroku'
 gem 'execjs'
 gem 'therubyracer'
-
-# Heroku does not support SQLite, use PostgreSQL instead
-group :production do
-  gem 'pg'
-end
-
-group :development do
-  gem 'sqlite3'
-end
-
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
 gem 'json'
 
 # Gems used only for assets and not required
@@ -29,20 +21,17 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
+# Heroku does not support SQLite, use PostgreSQL instead
+group :production do
+  gem 'pg'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development do
+  gem 'sqlite3'
+  gem 'heroku'
+end
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-gem 'heroku'
+group :test do
+  gem 'factory_girl_rails'
+end
 
