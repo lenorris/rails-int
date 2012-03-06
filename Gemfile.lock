@@ -7,6 +7,14 @@ GIT
       actionpack
       railties
 
+GIT
+  remote: git@github.com:Eficode/isbn_validator.git
+  revision: 4928716c57898ae5b9e57f9def415a13df391834
+  specs:
+    isbn_validator (0.1.0)
+      activemodel (>= 3.0)
+      activemodel (>= 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -155,6 +163,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-test
   heroku
+  isbn_validator!
   jquery-rails
   json
   pg
