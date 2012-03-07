@@ -1,0 +1,41 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+
+  <% unless @user.errors.empty? %>
+    <div class="alert-message block-message error">
+      <h2>Please check the following information</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <fieldset>
+    <div class="clearfix">
+      <label>Email:</label>
+      <div class="input">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <label>Password:</label>
+      <div class="input">
+        <%= f.password_field :password %>
+      </div>
+    </div> 
+    <div class="clearfix">
+      <label>Password confirmation:</label>
+      <div class="input">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+  </fieldset>
+ 
+  <div class="actions">    
+   <%= f.submit "Sign up", class: 'btn primary' %>
+  </div>
+
+<% end %>

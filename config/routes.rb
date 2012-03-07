@@ -1,5 +1,7 @@
 Library::Application.routes.draw do
   
+  resources :users
+  
   resources :books do
     collection do
       get :search
