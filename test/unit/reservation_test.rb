@@ -7,10 +7,9 @@ class ReservationTest < ActiveSupport::TestCase
   end
   
   should validate_presence_of(:book_id)
-  should validate_presence_of(:email)
+  should validate_presence_of(:user)
   should allow_value("free").for(:state)
   should allow_value("reserved").for(:state)
-  should_not allow_value("invalid@e").for(:email)
   
   should "not allow reservation if the book already reserved" do
     reservation = Factory(:reservation, state: 'reserved')

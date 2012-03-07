@@ -1,5 +1,5 @@
 Factory.define :reservation do |f|
   f.association :book
+  f.association :user
   f.state 'free'
-  f.email 'library@eficode.com'
 end

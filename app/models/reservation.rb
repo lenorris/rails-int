@@ -4,7 +4,7 @@ class Reservation < ActiveRecord::Base
   
   validates :book_id, presence: true
   validates :state,   inclusion: { in: STATES }
-  validates :email,   presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :user,    presence: true
   
   validates :book_id, uniqueness: { 
                         scope: :state, 
@@ -15,6 +15,7 @@ class Reservation < ActiveRecord::Base
   before_validation :make_reserved, :on => :create
   
   belongs_to :book
+  belongs_to :user
   
   def free
     self.update_attributes({state: 'free'})
