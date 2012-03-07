@@ -5,6 +5,7 @@ class BooksControllerTest < ActionController::TestCase
   setup do
     @book = Factory(:book)
     @search_book = Factory(:book, title: 'Rails Recipes', isbn: '978-1-93435-677-7', authors: 'Chad Fowler')
+    login_as(Factory(:user))
   end
   
   test "book listing" do

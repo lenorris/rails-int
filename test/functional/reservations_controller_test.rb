@@ -6,6 +6,7 @@ class ReservationsControllerTest < ActionController::TestCase
     @book          = Factory(:book)
     @reserved_book = Factory(:book)
     @reservation   = Factory(:reservation, book: @reserved_book, state: 'reserved')
+    login_as(Factory(:user))
   end
   
   test "new reservation" do
