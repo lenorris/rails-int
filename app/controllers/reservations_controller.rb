@@ -16,9 +16,9 @@ class ReservationsController < ApplicationController
   
   def free
     @book = Book.find(params[:book_id])
-    @reservation = @book.reservations.find(params[:id])
+    @reservation = @book.reservations.where(id: params[:id], user_id: current_user.id).first
    
-    if @reservation.free
+    if @reservation && @reservation.free
       flash[:notice] = "Book is no longer reserved"
     else
       flash[:error]  = "Something went wrong"
