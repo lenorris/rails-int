@@ -58,4 +58,23 @@ class SessionsControllerTest < ActionController::TestCase
     
   end
   
+  context "current_user" do
+    
+    setup do
+      @user = Factory(:user)
+    end
+    
+    should "return the logged in user when logged in" do
+      session[:user_id] = @user.id
+      
+      assert_equal @controller.send(:current_user), @user
+    end
+    
+    should "return nil when not logged in" do
+      assert @controller.send(:current_user).nil?
+    end
+    
+  end
+  
+  
 end

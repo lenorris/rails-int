@@ -19,9 +19,18 @@
           <% end %>
           <span class="pull-right">
             <ul class="nav">
-              <li>
-                <%= link_to "Log out", session_path, method: :delete %>
-              </li>
+              <% if current_user %>
+                <li>
+                  <%= link_to "Log out", session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "Log in", new_session_path %>
+                </li>
+                <li>
+                  <%= link_to "Sign up", new_user_path %>
+                </li>
+              <% end %>
             </ul>
           </span>
         </div>
