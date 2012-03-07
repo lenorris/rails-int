@@ -42,4 +42,20 @@ class SessionsControllerTest < ActionController::TestCase
     
   end
   
+  context "logout" do
+    
+    setup do
+      session[:user_id] = Factory(:user)
+    end
+    
+    should "log out" do
+      delete :destroy
+      
+      assert_response :redirect
+      assert_redirected_to new_session_path
+      assert session[:user_id].nil?
+    end
+    
+  end
+  
 end

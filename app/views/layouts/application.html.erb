@@ -17,6 +17,13 @@
             <%= image_tag "books.png", width: '20px' %>  
             Library
           <% end %>
+          <span class="pull-right">
+            <ul class="nav">
+              <li>
+                <%= link_to "Log out", session_path, method: :delete %>
+              </li>
+            </ul>
+          </span>
         </div>
       </div>
     </div>
