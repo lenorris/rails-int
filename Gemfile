@@ -12,7 +12,7 @@ gem 'therubyracer'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
 gem 'json'
-gem 'isbn_validator', :git => 'git@github.com:Eficode/isbn_validator.git'
+gem 'isbn_validator', :git => 'git://github.com/Eficode/isbn_validator.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
