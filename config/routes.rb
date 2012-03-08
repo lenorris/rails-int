@@ -1,5 +1,6 @@
 Library::Application.routes.draw do
   
+  resource :session # user can only manage one session!
   resources :users
   
   resources :books do

@@ -2,7 +2,7 @@
   
   <% unless @user.errors.empty? %>
     <div class='alert alert-block alert-error'>
-      <h2 class='alert-heading'>Failed to save book</h2>
+      <h2 class='alert-heading'>Failed to create user</h2>
       <% @user.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
       <% end %>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Thanks for registering."
       redirect_to root_path
     else
-      render action: :new
+      render :new
     end
   end
 end

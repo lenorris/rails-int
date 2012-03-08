@@ -14,9 +14,27 @@
       <div class="navbar-inner">
         <div class="container">
           <%= link_to root_path, class: 'brand' do %>
-            <%= image_tag "books.png", width: '20px' %>  
+            <%= image_tag "books.png", width: '20px' %>
             Library
           <% end %>
+          
+					<span class="pull-right">
+						<ul class="nav">
+            <% if current_user %>
+							<li>
+								<%= link_to "Log out", session_path, method: :delete %>
+							</li>
+              <% else %>
+        			<li>
+								<%= link_to "Log in", new_session_path %>
+							</li>
+        			<li>
+								<%= link_to "Sign up", new_user_path %>
+							</li>
+              <% end %>
+						</ul>
+					</span>
+          
         </div>
       </div>
     </div>
